@@ -15,6 +15,7 @@ public class Student {
         this.email = email;
         this.password=password;
         this.gender = gender;
+
     }
 
     public String getName() {

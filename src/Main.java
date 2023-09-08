@@ -97,7 +97,6 @@ public class Main {
                                 case 4:
                                     if (choice == 4) {
                                         groupService.getAllGroup();
-
                                     }
                                 case 5:
                                     if (choice == 5) {
@@ -107,16 +106,27 @@ public class Main {
                                         String name3 = scanner11.next();
                                         scanner11.nextLine();
                                         System.out.print("Write fullName: ");
-                                        String fullNAme = scanner11.next();
+                                        String fullName = scanner11.next();
                                         scanner11.nextLine();
                                         System.out.print("Put email: ");
                                         String email22 = scanner11.next();
                                         scanner11.nextLine();
                                         System.out.print("Put password: ");
                                         int password1 = scanner11.nextInt();
-                                        System.out.println(studentService.addNewStudent(nameGroup, new Student(name3, fullNAme, email22, password1, Gender.MALE)));
 
+
+                                        System.out.print("Put name of the gender: ");
+                                        String genderSInput = scanner.next();
+                                        Gender gens = Gender.fromString(genderSInput);
+                                        if (gens != null) {
+                                            System.out.println(studentService.addNewStudent(
+                                                    nameGroup, new Student(name3, fullName, email22, password1, gens)));
+                                        } else {
+                                            System.out.println("Invalid gender input.");
+                                        }
                                     }
+
+
                                 case 6:
                                     if (choice == 6) {
                                         System.out.println("Write group name to get all student: ");
@@ -201,15 +211,13 @@ public class Main {
                     } catch (RuntimeException e) {
                         System.out.println(e.getMessage());
                         System.out.println("You put incorrect data to get access");
-                        System.out.println("1. Choose 1 if you registered");
-                        System.out.println("2. Choose 2 if you forget your password");
-                        System.out.println("3. Exit");
+                        System.out.println("1. Choose 1 if you forget your password");
+                        System.out.println("2. Exit");
                         int choice33 = scanner.nextInt();
                         switch (choice33) {
-                            case 2:
-                                if (choice33 == 2) {
+                            case 1:
+                                if (choice33 == 1) {
                                     System.out.println("****Create your new password**** ");
-                                    System.out.println("Your password and email must do contain letters A, d, e, l and any number");
                                     System.out.print("Put password: ");
                                     String nn = scanner.next();
                                     person.setPassword(nn);
@@ -223,7 +231,6 @@ public class Main {
                 case 2:
                     if(choice1==2){
                         System.out.println("****Create your new password**** ");
-                        System.out.println("Your password and email must do contain letters A, d, e, l and any number");
                         System.out.print("Put password: ");
                         String newPassword = scanner.next();
                         person.setPassword(newPassword);
